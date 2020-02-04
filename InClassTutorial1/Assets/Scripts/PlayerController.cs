@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float speed = 20;
+    [SerializeField]
+    private GameObject EndOFRoad;
+    private float EndOfRoadZValue;
+
     void Start()
     {
-        
+        Transform EndOfRoadTransform = EndOFRoad.GetComponent<Transform>();
+        EndOfRoadZValue = EndOfRoadTransform.position.z;
     }
-
-    public float speed = 20;
 
     void Update()
     {
+        if (this.transform.position.z >= EndOfRoadZValue)
+            return;
+
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 }
