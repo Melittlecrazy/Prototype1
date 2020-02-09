@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 20;
+    private float speed = 20.0f;
     [SerializeField]
     private GameObject EndOFRoad;
     private float EndOfRoadZValue;
+    private float turnspeed = 200.0f;
+    private float horizontalInput;
+    private float forwardInput;
 
     void Start()
     {
@@ -20,6 +23,10 @@ public class PlayerController : MonoBehaviour
         if (this.transform.position.z >= EndOfRoadZValue)
             return;
 
+        horizontalInput = Input.GetAxis("Horizontal");
+        forwardInput = Input.GetAxis("Vertical");
+
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.Rotate(Vector3.up, turnspeed * horizontalInput * Time.deltaTime);
     }
 }
