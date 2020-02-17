@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
         {
-            Instantiate(projectilePrefab,transform.position,projectilePrefab.transform.rotation);
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
         }
     }
 }
